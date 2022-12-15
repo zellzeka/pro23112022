@@ -6,6 +6,9 @@ if(operationNumber == '+'){
     result = firstNumber + SecondNumber;
     console.log('Plus value:', result);
 }
+else if(operationNumber == '/' && SecondNumber == "0"){
+    console.log("Ділити на 0 не можна!");
+}
 else if(operationNumber == '*'){
     result = firstNumber * SecondNumber;
     console.log('Multiplie value:', result);
