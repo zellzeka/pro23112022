@@ -1,7 +1,6 @@
 let amountUsa = parseInt(prompt("вкажіть кількість USD"));
 let amountEuro = parseInt(prompt("вкажіть кількість Euro"));
 let amountUa = parseInt(prompt("вкажіть кількість Гривень"));
-let currensyType =(prompt("вкажіть бажаний тип валюти", "USD, EUR, UAH"));
 
 let userWallet = new Object();
 userWallet.amountUsa = amountUsa;
@@ -25,34 +24,46 @@ let bank =[
         sell: 1,
     }
 ]
-function availableCurr(obj, array2){
-    let sellUsd;
-    let sellEur;
-    if (currensyType === "USD" && amountUa > 0){
-        sellUsd = `Ви можете придбати ${obj.amountUa / array2[0].sell} долларів за ${amountUa} гривень`;
-        console.log(sellUsd);
-    } else if(currensyType === "EUR" && amountUa > 0){
-        sellEur = `Ви можете придбати ${obj.amountUa / array2[1].sell} євро за ${amountUa} гривень`;
-        console.log(sellEur);
-    }  else {
-        console.log("Введіть значення валюти для обчислень");
+function availableCurr(array2){
+    let sellArray = [];
+    if (userWallet.amountUa == 0){
+        console.log("Недостатньо грошей для обміну"); 
+        return;
     }
-    return [sellUsd, sellEur]
+    array2.forEach(value => {
+        sellArray.push(`Ви можете придбати ${userWallet.amountUa / value.buy} ${value.name} за ${amountUa} гривень`)
+    });
+    console.log(sellArray);
+    return [sellArray];
 }
-function availableHryvna(obj, array2){
-    let hryvniaCounter = amountUa;
-    if (currensyType === "USD"){
-        hryvniaCounter = `Ви отримаєте ${obj.amountUsa * array2[0].buy} гривень`;
-        console.log(hryvniaCounter);
-    } else if(currensyType === "EUR"){
-        sellEur = `Ви отримаєте ${obj.amountEuro * array2[1].buy} гривень`;
-        console.log(hryvniaCounter);
-    } 
-    return hryvniaCounter;
+function availableHryvna(array2){
+    let reachCounter = 0;
+    let valletAmount =[];
+    for(let value in userWallet){
+        valletAmount.push(userWallet[value]);
+        if (userWallet[value] == 0){
+            reachCounter += 1;
+        }
+    }
+    if (array2.length == reachCounter){;
+        console.log("Недостатньо коштів");
+        return;
+    }
+
+    let SumReach = 0;
+    let SumSell = [];
+    for(let value of array2){
+        SumSell.push(value.sell);
+    }
+    SumSell.forEach((sellValue, index)=>{
+        let allReach = valletAmount[index];
+        SumReach += sellValue * allReach;
+    });
+    console.log(SumReach);
 }
 
-availableCurr(userWallet, bank);
-availableHryvna(userWallet, bank);
+availableCurr(bank);
+availableHryvna(bank);
 // ======================== Валютний калькулятор =========================
 
 let distace = prompt("Введіть кількість кроків");
