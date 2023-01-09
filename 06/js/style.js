@@ -50,83 +50,16 @@ function centuryCalc(...year) {
 console.log(centuryCalc(customerYear));
 // ====================== функція, що вираховує столлітя за роком ==============
 
-let monthArr = [
-    {
-        name: "Січень",
-        month: 1,
-        days: 31,
-    },
-    {
-        name: "Лютий",
-        month: 2,
-        days: 28,
-    },
-    {
-        name: "Березень",
-        month: 3,
-        days: 31,
-    },
-    {
-        name: "Квітень",
-        month: 4,
-        days: 30,
-    },
-    {
-        name: "Травень",
-        month: 5,
-        days: 31,
-    },
-    {
-        name: "Червень",
-        month: 6,
-        days: 30,
-    },
-    {
-        name: "Липень",
-        month: 6,
-        days: 31,
-    },
-    {
-        name: "Серпень",
-        month: 8,
-        days: 31,
-    },
-    {
-        name: "Вересень",
-        month: 9,
-        days: 30,
-    },
-    {
-        name: "Жовтень",
-        month: 10,
-        days: 31,
-    },
-    {
-        name: "Листопад",
-        month: 11,
-        days: 30,
-    },
-    {
-        name: "Грудень",
-        month: 12,
-        days: 31,
-    }
-];
-let customerMonth = parseInt(prompt("Введіть номер місяця", 1,2,3));
 
-function dayQuantity(data, arr){
-    for (let {month, days} of arr){
-        if (data == month){
-            let currentDays = `У цьому місяці ${days} днів`
-            
-            console.log(currentDays);
-            
-        } else if (data + 1 == month){
-             let nextDays = `У наступному місяці ${days} днів`
-             console.log(nextDays);
-        }
-    }   
+let customerMonth = parseInt(prompt("Введіть номер місяця", 1,2,3));
+let customYear =  parseInt(prompt("Введіть рік", 2023));
+
+
+function dayQuantity(month, year){
+    let currentQuant = new Date(year, month, 0).getDate();
+    let nextQuant = new Date(year, month + 1, 0).getDate();
+    console.log(`У цьому місяці ${currentQuant} днів, у наступному місяці ${nextQuant} днів`)
     return;
 }
 
-dayQuantity(customerMonth, monthArr);
+dayQuantity(customerMonth, customYear);
