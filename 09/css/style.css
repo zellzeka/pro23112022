@@ -1,0 +1,25 @@
+
+.modale{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    padding:30px 0;
+    background-color: rgba(0, 0, 0, 0.445);
+    visibility:hidden;
+}
+
+.modal-content {
+    position: absolute;
+    background: #fff;
+    width: 600px;
+    max-width: 100%;
+    padding: 20px;
+    
+}
+
+.modale--active{
+    visibility: visible;
+}
