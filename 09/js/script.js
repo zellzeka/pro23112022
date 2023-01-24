@@ -38,6 +38,7 @@ window.onload=()=>{
     }
     nextButton.addEventListener('click', nextImg);
     currentImg.onmouseover = ()=> clearInterval(interval);
+    
     // ========== Кнопки ===================
 
     let timerHeader = document.querySelector('.timer-header');
@@ -50,10 +51,12 @@ window.onload=()=>{
         timerBody.innerText = timerCounter;
         if (timerCounter === 60){
             alert("Ви дочикались знижок");
-            timerCounter = 0;
+            clearInterval(timerInterval);
+            timerBody.innerText ="";
         }
+        
     }
-    setInterval(timerFunction, 1000);
+    let timerInterval = setInterval(timerFunction, 1000);
     // ========== таймер ================
 
     let startButton = document.querySelector('.btn-primary');
@@ -72,14 +75,17 @@ window.onload=()=>{
         
     }
 
-        function closeModal (e){
-                modalWindow.classList.remove('modale--active');
-                modalDialog.setAttribute('aria-hidden', 'true');
-                e.stopPropagation();  
+        function closeModal (event){
+                if((event.target == modalWindow) || (event.target == closeButton)){
+                    modalWindow.classList.remove('modale--active');
+                    modalDialog.setAttribute('aria-hidden', 'true');
+                } else {
+                    event.stopPropagation();
+                }
+                
             } 
 
     startButton.addEventListener('click', openModal);
-    closeButton.addEventListener('click', closeModal);
     modalWindow.addEventListener('click', closeModal);
     
     
