@@ -12,21 +12,18 @@ window.onload = ()=>{
     function selectionSize (e){
         let sizeValue = e.target.value;
         sizeSelect.setAttribute('disabled','');
+        function sizePattern (shown, hide1, hide2, price){
+            shown.classList.replace('d-none', 'd-block');
+            hide1.classList.replace('d-block', 'd-none');
+            hide2.classList.replace('d-block', 'd-none');
+            selectedPrice.textContent = `${price} грн`;
+        }
         if (sizeValue == 1){
-            bigSize.classList.replace('d-none', 'd-block');
-            mediumSize.classList.replace('d-block', 'd-none');
-            smallSize.classList.replace('d-block', 'd-none');
-            selectedPrice.textContent = `${bigSizePrice} грн`;
+            sizePattern(bigSize, mediumSize,smallSize, bigSizePrice);
         } else if (sizeValue == 2){
-            mediumSize.classList.replace('d-none', 'd-block');
-            bigSize.classList.replace('d-block', 'd-none');
-            smallSize.classList.replace('d-block', 'd-none');
-            selectedPrice.textContent = `${mediumSizePrice} грн`;
+            sizePattern(mediumSize, bigSize,smallSize, mediumSizePrice);
         } else if(sizeValue == 3){
-            smallSize.classList.replace('d-none', 'd-block');
-            bigSize.classList.replace('d-block', 'd-none');
-            mediumSize.classList.replace('d-block', 'd-none');
-            selectedPrice.textContent = `${smallSizePrice} грн`;
+            sizePattern(smallSize, bigSize,mediumSize, smallSizePrice);
         }
         return selectedPrice;
     }
@@ -47,36 +44,24 @@ window.onload = ()=>{
     function selectionFilling(e){
         let fillingValue = e.target.value;
         fillingSelect.setAttribute('disabled','');
+        function fillingPattern (meat, chise, hawai, margo, price){
+            meat.classList.replace('d-none', 'd-block');
+            chise.classList.replace('d-block', 'd-none');
+            hawai.classList.replace('d-block', 'd-none');
+            margo.classList.replace('d-block', 'd-none');
+            selectedPrice.textContent = `${parseInt(selectedPrice.textContent) + price} грн`;
+            document.querySelector('.meatpizza-price').textContent = `${price} грн`;
+        }
         if (fillingValue == 1){
-            meatpizzaCard.classList.replace('d-none', 'd-block');
-            chiesepizzaCard.classList.replace('d-block', 'd-none');
-            hawaianpizzaCard.classList.replace('d-block', 'd-none');
-            margartapizzaCard.classList.replace('d-block', 'd-none');
-            selectedPrice.textContent = `${parseInt(selectedPrice.textContent) + meatpizzaPrice} грн`;
-            document.querySelector('.meatpizza-price').textContent = `${meatpizzaPrice} грн`;
+            fillingPattern(meatpizzaCard, chiesepizzaCard, hawaianpizzaCard, margartapizzaCard, meatpizzaPrice);
             
         } else if (fillingValue == 2){
-            chiesepizzaCard.classList.replace('d-none', 'd-block');
-            meatpizzaCard.classList.replace('d-block', 'd-none');
-            hawaianpizzaCard.classList.replace('d-block', 'd-none');
-            margartapizzaCard.classList.replace('d-block', 'd-none');
-            selectedPrice.textContent = `${parseInt(selectedPrice.textContent) + chiesepizzaPrce} грн`;
-            document.querySelector('.chiesepizza-price').textContent = `${chiesepizzaPrce} грн`;
+            fillingPattern(chiesepizzaCard, meatpizzaCard, hawaianpizzaCard, margartapizzaCard, chiesepizzaPrce);
 
         } else if(fillingValue == 3){
-            hawaianpizzaCard.classList.replace('d-none', 'd-block');
-            chiesepizzaCard.classList.replace('d-block', 'd-none');
-            meatpizzaCard.classList.replace('d-block', 'd-none');
-            margartapizzaCard.classList.replace('d-block', 'd-none');
-            selectedPrice.textContent = `${parseInt(selectedPrice.textContent) + hawaianpizzaPrice} грн`;
-            document.querySelector('.hawaianpizza-price').textContent = `${hawaianpizzaPrice} грн`;
+            fillingPattern(hawaianpizzaCard, chiesepizzaCard, meatpizzaCard, margartapizzaCard, hawaianpizzaPrice);
         } else if(fillingValue == 4){
-            margartapizzaCard.classList.replace('d-none', 'd-block');
-            hawaianpizzaCard.classList.replace('d-block', 'd-none');
-            chiesepizzaCard.classList.replace('d-block', 'd-none');
-            meatpizzaCard.classList.replace('d-block', 'd-none');
-            selectedPrice.textContent = `${parseInt(selectedPrice.textContent) + margartapizzaPrice} грн` ;
-            document.querySelector('.margartapizza-price').textContent = `${margartapizzaPrice} грн`;
+            fillingPattern(margartapizzaCard, hawaianpizzaCard, chiesepizzaCard, meatpizzaCard, margartapizzaPrice);
         }
         
         return selectedPrice;
