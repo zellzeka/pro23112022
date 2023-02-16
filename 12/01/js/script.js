@@ -24,8 +24,8 @@ window.onload = () => {
       );
       elipse.setAttribute("cx", widthInput.value);
       elipse.setAttribute("cy", heightInput.value);
-      elipse.setAttribute("rx", widthInput.value);
-      elipse.setAttribute("ry", heightInput.value);
+      elipse.setAttribute("rx", widthInput.value/2);
+      elipse.setAttribute("ry", heightInput.value/2);
       svg.appendChild(elipse);
       figureContainer.appendChild(svg);
     } else {
