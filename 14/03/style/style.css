@@ -1,0 +1,12 @@
+body{
+    background-color: black;
+}
+
+.wrapper{
+    margin: 0 auto;
+    width: 90%;
+}
+.slick-list{
+    
+    overflow: hidden;
+}
