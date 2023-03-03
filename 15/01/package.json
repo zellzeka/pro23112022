@@ -1,0 +1,23 @@
+{
+  "name": "homework",
+  "version": "1.0.0",
+  "description": "gulp practice ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "zellZeka",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.27.11",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.1"
+  },
+  "dependencies": {
+    "gulp-beautify": "^3.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-sass": "^5.0.0"
+  }
+}
